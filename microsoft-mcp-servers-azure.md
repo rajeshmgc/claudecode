@@ -1,116 +1,107 @@
-# Microsoft's MCP Servers: The New Way AI Agents Spin Up Azure Resources
+# Microsoft's MCP Servers for Azure: What They Are and How to Use Them
 
-The cloud infrastructure landscape is shifting fast. Microsoft has quietly built one of the most comprehensive **Model Context Protocol (MCP)** ecosystems in the industry — and it's tailor-made for AI agents that need to provision, manage, and monitor Azure resources.
-
-If you're building agentic workflows or exploring AI-driven cloud automation, here's what you need to know.
+Microsoft has been building out a solid set of **Model Context Protocol (MCP)** servers that let AI agents work directly with Azure resources. If you're experimenting with AI-driven automation or building agentic workflows on Azure, these tools are worth understanding.
 
 ---
 
-## What is MCP and Why Does It Matter for Azure?
+## What is MCP?
 
-The **Model Context Protocol (MCP)** is an open standard that lets AI agents (like GitHub Copilot, Claude, or custom LLM agents) communicate with external tools and services through a consistent interface. Think of it as a "universal plug" that connects AI brains to real-world infrastructure.
+The **Model Context Protocol (MCP)** is an open standard that allows AI agents — such as GitHub Copilot, Claude, or custom LLM-based tools — to interact with external services through a consistent interface. Instead of building one-off integrations for each service, MCP gives agents a standardized way to call tools and retrieve context from the systems around them.
 
-Microsoft has embraced MCP at scale — releasing a growing suite of servers that give agents direct access to Azure services, DevOps pipelines, data platforms, and developer tooling.
+Microsoft has leaned into this standard across a range of Azure services and developer tools.
 
 ---
 
-## Microsoft's Key MCP Servers for Azure Resource Management
+## Microsoft's MCP Servers for Azure
 
-### 1. Azure MCP Server (v2.0 — GA April 2026)
-**The flagship.** This is the one you want if you're serious about agentic cloud automation.
+### 1. Azure MCP Server
 
-- **276 tools** spanning **57 Azure services** — from AKS and Container Apps to Cosmos DB and Azure AI
-- Remote HTTP deployment for self-hosted, enterprise-grade scenarios
-- **Entra ID authentication** with On-Behalf-Of (OBO) authorization — no shared credentials
-- **Azure RBAC integration** for fine-grained access control
+This is the main server for Azure resource management via agents. It covers a broad range of Azure services — including AKS, Container Apps, Cosmos DB, and Azure AI — and supports enterprise deployment scenarios.
+
+Key capabilities:
+- Remote HTTP deployment for self-hosted setups
+- **Entra ID authentication** with On-Behalf-Of (OBO) support — no shared credentials needed
+- **Azure RBAC integration** for access control
 - Sovereign cloud support, including **Azure US Government**
-- Open source: [github.com/Azure/azure-mcp](https://github.com/Azure/azure-mcp)
 
-> Use case: An agent can provision a new Cosmos DB instance, configure a Container App, and wire up an AI service — all from a natural language instruction.
+It's open source and actively maintained: [github.com/Azure/azure-mcp](https://github.com/Azure/azure-mcp)
 
----
-
-### 2. Azure DevOps MCP Server (GA — Nov 2025)
-Your CI/CD and project management layer, now agent-accessible.
-
-- Interact with **work items, pull requests, builds, test plans, and wikis**
-- Tight integration with **GitHub Copilot** and other AI assistants
-- Enables agents to trigger builds, create work items, or query pipeline status programmatically
-- Open source: [github.com/microsoft/azure-devops-mcp](https://github.com/microsoft/azure-devops-mcp)
-
-> Use case: An agent detects a failed deployment, opens a work item, and kicks off a rollback pipeline — automatically.
+**Example:** An agent can provision a Cosmos DB instance, configure a Container App, and connect an AI service based on a natural language request.
 
 ---
 
-### 3. Microsoft Fabric MCP Server (Public Preview — Oct 2025)
-For data-heavy agentic workflows.
+### 2. Azure DevOps MCP Server
 
-- Two modes: **local API context provider** (for code generation) and **real-time intelligence server** (natural language → KQL queries)
-- Bridges AI agents to Microsoft's unified data platform
-- Ideal for analytics automation, data pipeline orchestration, and BI-driven workflows
+This server exposes Azure DevOps capabilities to AI agents — work items, pull requests, builds, test plans, and wikis are all accessible.
 
-> Use case: An agent translates a business question into a KQL query, runs it against Fabric, and returns formatted insights to a Slack bot.
+It integrates with GitHub Copilot and similar assistants, so agents can trigger builds, create work items, or query pipeline status without custom scripting.
+
+Open source: [github.com/microsoft/azure-devops-mcp](https://github.com/microsoft/azure-devops-mcp)
+
+**Example:** An agent spots a failed deployment, files a work item, and kicks off a rollback pipeline automatically.
+
+---
+
+### 3. Microsoft Fabric MCP Server
+
+Aimed at data-heavy workflows, this server connects agents to Microsoft Fabric — Microsoft's unified data and analytics platform.
+
+It has two modes:
+- A **local API context provider** for code generation assistance
+- A **real-time intelligence server** that translates natural language into KQL queries
+
+**Example:** An agent converts a business question into a KQL query, runs it against Fabric, and returns formatted results.
 
 ---
 
 ### 4. Azure AI Foundry MCP Server
-For teams building AI-on-AI workflows.
 
-- Connects agents to **Azure AI Foundry** — Microsoft's platform for deploying and managing AI models
-- Enables agents to query model deployments, manage AI projects, and retrieve evaluation metrics
+This server connects agents to Azure AI Foundry, Microsoft's platform for deploying and managing AI models. Agents can query model deployments, manage AI projects, and retrieve evaluation metrics.
 
 ---
 
-### 5. Azure Functions MCP Support (GA — Jan 2026)
-Run your own MCP logic serverlessly.
+### 5. Azure Functions MCP Support
 
-- Supports **.NET, Java, JavaScript, Python, and TypeScript**
-- New self-hosted option: deploy existing MCP SDK-based servers **without code changes**
-- Perfect for custom tools and domain-specific agent capabilities
+Azure Functions supports hosting MCP servers directly, which means you can run custom MCP logic serverlessly without a dedicated server. It supports .NET, Java, JavaScript, Python, and TypeScript, and existing MCP SDK-based servers can be deployed without code changes.
 
 ---
 
-### 6. Additional Microsoft MCP Servers Worth Knowing
+### 6. Other Microsoft MCP Servers
 
-| Server | Purpose |
+| Server | What it does |
 |---|---|
 | **SQL MCP Server** | Natural language queries against Azure SQL |
-| **Microsoft 365 Agents Toolkit MCP** | M365 app development via agents |
+| **Microsoft 365 Agents Toolkit MCP** | M365 app development through agents |
 | **Dev Box MCP** | Manage cloud developer workstations |
-| **Microsoft Learn MCP** | Documentation retrieval for AI assistants |
+| **Microsoft Learn MCP** | Pulls documentation for AI assistants |
 | **NuGet MCP Server** | Package discovery and management |
-| **Clarity MCP** | Web analytics insights via agents |
+| **Clarity MCP** | Web analytics data via agents |
 
 ---
 
-## Visual Studio 2026: MCP Goes Mainstream
+## IDE Integration
 
-Azure MCP Server is now **built into Visual Studio 2026** under the "Azure and AI development" workload. This means developers get agentic Azure resource management out of the box — no extra setup required. The IDE can query your subscriptions, inspect resource states, and help you provision infrastructure through natural language conversations with GitHub Copilot.
+Azure MCP Server is available as part of Visual Studio's Azure and AI development workload, which means developers can manage Azure resources through natural language conversations with GitHub Copilot directly from the IDE — querying subscriptions, checking resource states, or provisioning infrastructure.
 
 ---
 
-## Why This Is a Big Deal
+## Why This Matters
 
-Most cloud automation today still relies on Terraform scripts, ARM templates, or manual portal clicks. MCP servers flip this model: agents become **first-class operators** of your cloud infrastructure, with:
+Most cloud automation still relies on Terraform templates, ARM scripts, or manual portal work. MCP servers shift this by giving agents direct, standardized access to cloud services — with proper authentication and access controls in place.
 
-- **Standardized interfaces** — no custom integrations per service
-- **Enterprise security** — RBAC, Entra ID, OBO flows
-- **Composability** — chain multiple MCP servers for end-to-end workflows
-- **IDE-native experience** — from VS Code to Visual Studio 2026
-
-The shift from "infrastructure as code" to "infrastructure as conversation" is underway.
+A few things that stand out:
+- **No custom integrations** — one protocol across services
+- **Enterprise security** — RBAC and Entra ID support built in
+- **Composable** — you can chain multiple MCP servers for multi-step workflows
+- **Works in your IDE** — VS Code and Visual Studio both support it
 
 ---
 
 ## Getting Started
 
 1. Install the Azure MCP Server: [Microsoft Learn Overview](https://learn.microsoft.com/en-us/azure/developer/azure-mcp-server/overview)
-2. Integrate with GitHub Copilot CLI: [Quickstart Guide](https://learn.microsoft.com/en-us/azure/developer/azure-mcp-server/how-to/github-copilot-cli)
-3. Explore the full MCP server catalog: [github.com/microsoft/mcp](https://github.com/microsoft/mcp)
-
----
-
-*What Azure workflows are you hoping to automate with AI agents? Drop a comment — I'd love to hear what problems you're solving.*
+2. Integrate with GitHub Copilot: [Quickstart Guide](https://learn.microsoft.com/en-us/azure/developer/azure-mcp-server/how-to/github-copilot-cli)
+3. Browse the full MCP server catalog: [github.com/microsoft/mcp](https://github.com/microsoft/mcp)
 
 ---
 
@@ -119,9 +110,8 @@ The shift from "infrastructure as code" to "infrastructure as conversation" is u
 - [What is the Azure MCP Server? — Microsoft Learn](https://learn.microsoft.com/en-us/azure/developer/azure-mcp-server/overview)
 - [Announcing Azure MCP Server 2.0 Stable Release — Azure SDK Blog](https://devblogs.microsoft.com/azure-sdk/announcing-azure-mcp-server-2-0-stable-release/)
 - [Introducing the Azure MCP Server — Azure SDK Blog](https://devblogs.microsoft.com/azure-sdk/introducing-the-azure-mcp-server/)
-- [Azure MCP Server Now Built-In with Visual Studio 2026 — Visual Studio Blog](https://devblogs.microsoft.com/visualstudio/azure-mcp-server-now-built-in-with-visual-studio-2026-a-new-era-for-agentic-workflows/)
+- [Azure MCP Server Built-In with Visual Studio — Visual Studio Blog](https://devblogs.microsoft.com/visualstudio/azure-mcp-server-now-built-in-with-visual-studio-2026-a-new-era-for-agentic-workflows/)
 - [Azure DevOps MCP Server — GitHub](https://github.com/microsoft/azure-devops-mcp)
 - [Azure DevOps MCP Server GA — InfoQ](https://www.infoq.com/news/2025/11/microsoft-ado-mcp-server/)
 - [Azure Functions MCP Support — InfoQ](https://www.infoq.com/news/2026/01/azure-functions-mcp-support/)
-- [Microsoft Fabric MCP Server Preview — ECS 2026](https://ecs.events/a/microsoft-fabric-mcp-server-ai-powered-data-development-preview)
 - [Azure/azure-mcp — GitHub](https://github.com/Azure/azure-mcp)
